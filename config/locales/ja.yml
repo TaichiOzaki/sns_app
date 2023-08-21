@@ -3,6 +3,7 @@ ja:
     models:
       user: 'ユーザー'
       post: '投稿'
+      topic: '登録'
     attributes:
       user:
         email: 'メールアドレス'
