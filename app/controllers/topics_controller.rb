@@ -1,10 +1,26 @@
 class TopicsController < ApplicationController
- def new
+ 
+ 
+ 
+  def new
+    @topic = Topic.new
     render :new
- end
+  end
 
   def create
-    redirect_to 'topics/new'
+      @topic = Topic.new(topic_params)
+      #redirect_to 'topics/new'
+  
+    if @topic.save
+      redirect_to index_topic_path, notice: '登録しました'
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end 
+    
+  private
+  def post_params
+   params.require(:topic).permit(:title, :body, :image)
   end
 
   def edit
@@ -15,3 +31,4 @@ class TopicsController < ApplicationController
     redirect_to 'topics/edit'
   end
 end
+
