@@ -2,9 +2,21 @@ class PostsController < ApplicationController
  before_action :authenticate_user!
  
  def index
-  render :'posts/index'  # renders app/views/posts/index.html.erb
+  @title = params[:title]
+  if @title.present?
+    @posts = Post.where('title LIKE ?',"%#{title}%")
+  else
+    @posts = Post.all
+  end
+  render :index  # renders app/views/posts/index.html.erb
  end
  
+ 
+ def destroy
+  @post = Post.find(params[:id])
+  @post.destroy
+  redirect_to index_post_path, notice: '削除しました'
+ end
  
  def new
   @post = Post.new 
@@ -24,6 +36,25 @@ class PostsController < ApplicationController
    render :new, status: :unprocessable_entity
   end
  end
+ 
+ 
+ def edit
+   @post = Post.find(params[:id])
+   render :edit
+ end
+ 
+ def update
+   @post = Post.find(params[:id])
+   if params[:post][:image]
+     @post.image.attach(params[:post][:image])
+   end
+   if @post.update(post_patrams)
+    redirect_to index_post_path, notice: '更新しました'
+   else
+     render :edit, status: :unprocessable_entity
+   end
+ end
+     
  
  private
   def post_params
