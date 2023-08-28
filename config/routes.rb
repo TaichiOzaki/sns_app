@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
    # TopicsController
   get 'topics/new', to: 'topics#new', as: 'new_topics'
-  post 'topics/new', to: 'topics#edit', as: 'edi_post'
+  post 'topics/new', to: 'topics#edit', as: 'edit_post'
   get 'topics/edit', to: 'topics#edit', as: 'edit_topics'
   post 'topics/edit', to: 'topics#update',as: 'update_post'
 end
