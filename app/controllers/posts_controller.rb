@@ -4,7 +4,7 @@ class PostsController < ApplicationController
  def index
   @title = params[:title]
   if @title.present?
-    @posts = Post.where('title LIKE ?',"%#{title}%")
+    @posts = Post.where('title LIKE ?', "%#{title}%")
   else
     @posts = Post.all
   end
@@ -39,8 +39,8 @@ class PostsController < ApplicationController
  
  
  def edit
-   @post = Post.find(params[:id])
-   render :edit
+  @post = Post.find(params[:id])
+  render :edit
  end
  
  def update
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
    if params[:post][:image]
      @post.image.attach(params[:post][:image])
    end
-   if @post.update(post_patrams)
+   if @post.update(post_params)
     redirect_to index_post_path, notice: '更新しました'
    else
      render :edit, status: :unprocessable_entity
