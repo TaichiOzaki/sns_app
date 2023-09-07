@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   redirect_to index_post_path, notice: '削除しました'
  end
  
+
  def new
   @post = Post.new 
   render :new

@@ -3,7 +3,8 @@ ja:
     models:
       user: 'ユーザー'
       post: '投稿'
-      topic: '登録'
+      topic: 'トピックス'
+      comment: 'コメント'
     attributes:
       user:
         email: 'メールアドレス'
@@ -13,6 +14,10 @@ ja:
         title: 'タイトル'
         content: '内容'
         image: '画像'
+      topic:
+        title: 'タイトル'
+      comment:
+        content: 'コメント'
 
   date:
     abbr_day_names:

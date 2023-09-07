@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
- 
- 
+   before_action :authenticate_user!
  
   def new
     @topic = Topic.new
@@ -8,11 +7,11 @@ class TopicsController < ApplicationController
   end
 
   def create
-      @topic = Topic.new(topic_params)
+      @topic = Topic.new(post_params)
       #redirect_to 'topics/new'
   
     if @topic.save
-      redirect_to index_topic_path, notice: '登録しました'
+      redirect_to topic_path, notice: '登録しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +27,8 @@ class TopicsController < ApplicationController
   end
 
   def update
-    redirect_to 'topics/edit'
+  redirect_to edit_topic_path(@topic) 
   end
+
 end
 
