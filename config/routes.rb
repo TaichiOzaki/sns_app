@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
- get '/', to: 'posts#index', as: 'index_post'
+  get '/', to: 'posts#index', as: 'index_post'
+  get '/topics/index', to: 'topics#index', as: 'index_topics'
 
     # PostsController
   get 'posts/new', to: 'posts#new', as: 'new_post'

@@ -1,6 +1,16 @@
 class TopicsController < ApplicationController
    before_action :authenticate_user!
- 
+  
+  def index
+    @title = params[:title]
+    if @title.present?
+      @topic = Topic.where('title LIKE ?', "%#{@title}%")
+    else
+      @topic = Topic.all
+    end
+    render :index
+  end
+  
   def new
     @topic = Topic.new
     render :new
