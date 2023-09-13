@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_143734) do
   end
 
   create_table "topics", charset: "utf8mb4", force: :cascade do |t|
-    t.string "title"
+    t.string "title", limit: 100, null: false
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

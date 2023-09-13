@@ -11,6 +11,15 @@ class TopicsController < ApplicationController
     render :index
   end
   
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    redirect_to index_topic_path, notice: '削除しました'
+  end
+  
+  
+  
+  
   def new
     @topic = Topic.new
     render :new
@@ -26,10 +35,40 @@ class TopicsController < ApplicationController
     end
   end 
   
-  private
+ 
+  
+  
+  def edit
+    @topic = Topic.find(params[:id])
+    render :edit
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    if params[:topic][:image]
+      @topic.image.attach(params[:topic][:image])
+    end
+    if @topic.update(topic_params)
+      redirect_to index_topic_path, notice: '更新しました'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
+ 
+  def destroy
+    @topic = Topic.find(params[:id])
+    @topic.destroy
+    redirect_to index_topic_path, notice: '削除しました'
+  end
+  
+  
+   private
   def topic_params
     params.require(:topic).permit(:title, :body, :image)
   end 
  
+ 
+  
 end
 

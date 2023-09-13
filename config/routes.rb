@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/', to: 'posts#index', as: 'index_post'
-  get '/topics/index', to: 'topics#index', as: 'index_topics'
+  get '/topics/index', to: 'topics#index', as: 'index_topic'
 
     # PostsController
   get 'posts/new', to: 'posts#new', as: 'new_post'
@@ -18,13 +18,14 @@ Rails.application.routes.draw do
   # CommentsController
   get 'posts/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
   post 'posts/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
+  
 
     # TopicsController
   get 'topics/new', to: 'topics#new', as: 'new_topic'
   post '/topics/new', to: 'topics#create', as: 'create_topic'
   get 'topics/edit/:id', to: 'topics#edit', as: 'edit_topic'
   post '/topics/edit/:id', to: 'topics#update', as: 'update_topic'
-  
+  delete 'topics/destroy/:id', to: 'topics#destroy', as: 'destroy_topics'
   
 
 end
