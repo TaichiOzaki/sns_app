@@ -10,16 +10,7 @@ class TopicsController < ApplicationController
     end
     render :index
   end
-  
-  def destroy
-    @topic = Topic.find(params[:id])
-    @topic.destroy
-    redirect_to index_topic_path, notice: '削除しました'
-  end
-  
-  
-  
-  
+
   def new
     @topic = Topic.new
     render :new

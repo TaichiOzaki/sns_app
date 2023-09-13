@@ -35,6 +35,12 @@
             <li>
               <%= link_to "新規投稿", new_post_path, class: "nav-link" %>
             </li>
+            <li>
+              <%= link_to "スレッド一覧", "/topics/index", class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "スレッド新規投稿", "/topics/new", class: "nav-link" %>
+            </li>
           <% else %>
             <!-- ログインしていない場合に表示されます -->
             <!-- else 以降は前述のif文の否定になります -->
