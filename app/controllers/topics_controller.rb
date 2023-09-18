@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
   
     if @topic.save
-      redirect_to create_topic_path(@topic), notice: '登録しました'
+      redirect_to index_topic_path, notice: '登録しました'
     else
       render :new, status: :unprocessable_entity
     end

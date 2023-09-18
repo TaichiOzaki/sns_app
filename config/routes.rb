@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
     # TopicsController
   get 'topics/new', to: 'topics#new', as: 'new_topic'
-  post '/topics/new', to: 'topics#create', as: 'create_topic'
+  post 'topics/new', to: 'topics#create', as: 'create_topic'
   get 'topics/edit/:id', to: 'topics#edit', as: 'edit_topic'
-  post '/topics/edit/:id', to: 'topics#update', as: 'update_topic'
+  post 'topics/edit/:id', to: 'topics#update', as: 'update_topic'
   delete 'topics/destroy/:id', to: 'topics#destroy', as: 'destroy_topic'
   
 
